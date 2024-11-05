@@ -173,7 +173,7 @@ def weather_advice():
 # - Use 'in' to check if a string is in a list or tuple.
 # - Adjust the season based on the day of the month when needed.
 # - Ensure to validate input formats and handle unexpected inputs gracefully.
-
+'''
 def determine_season():  
     winter_months = ('Dec', 'Jan', 'Feb', 'Mar')
     spring_months = ('Mar', 'Apr', 'May', 'Jun')
@@ -206,3 +206,51 @@ def determine_season():
     print(f"{month} {day} is in  {season}")
 # Call the function
 determine_season()
+'''
+
+# Exercise 7: Number Guessing Game
+#
+# Write a Python function named `guess_number` that allows a user to guess a predetermined number within a range.
+#
+# Requirements:
+# - Set a fixed number as the target for guessing (e.g., 42).
+# - Prompt the user to guess a number within a range (e.g., 1 to 100).
+# - Allow the user to guess up to five times.
+# - After each guess, use conditional statements with AND, OR, and NOT to give the user hints like:
+#   - "Guess is too low" or "Guess is too high."
+#   - "Last chance!" when they are on their fifth guess.
+# - Print "Congratulations, you guessed correctly!" if they guess the number.
+# - Print "Sorry, you failed to guess the number in five attempts." if they do not succeed.
+#
+# Hints:
+# - Use a for loop with a range to limit guesses to five.
+# - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
+
+def guess_number():
+    target_num = 25
+    guess_attempts = 5
+
+    while guess_attempts > 0:
+        try:
+            user_guess = int(input(f"Guess the secret number (1-100) you have {guess_attempts} guesses left: "))
+        except ValueError:
+            print("Your please enter your guess as a whole number between 1-100.")
+            continue
+        if user_guess == target_num:
+            print(f"CONGRATULATIONS! You guessed that the magic number was {target_num}")
+            break
+        elif user_guess < target_num:
+            guess_attempts -=1
+            print(f"Incorrect guess. The magic number is larger than {user_guess} you have {guess_attempts} guesses left.")
+        elif user_guess > target_num:
+            guess_attempts -=1
+            print(f"Incorrect guess. The magic number is smaller than {user_guess} you have {guess_attempts} guesses left.")
+        else:
+            print("That was not a valid guess please enter a whole number between 1 and 100")
+    if guess_attempts == 0:
+        print(f"You have run out of guesses and didn't find the magic number {target_num}. Better luck next time.")
+    
+    
+# Call the function
+guess_number()
+
